@@ -21,10 +21,12 @@ import 'package:FlutterLiveTools/screens/ErrorScreen/19_connection_faild.dart';
 import 'package:FlutterLiveTools/screens/ErrorScreen/5_something_wrong.dart';
 
 import 'package:FlutterLiveTools/screens/E-commAPP/home/home_screen.dart';
+import 'package:FlutterLiveTools/screens/FireBase/firebaseMessaging.dart';
 import 'package:FlutterLiveTools/screens/LoginAPP/Welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 List<Widget> screenList = [
+  firebaseMessaging(),
   WelcomeScreen(),
   HomeScreen(),
   NoConnectionScreen(),
