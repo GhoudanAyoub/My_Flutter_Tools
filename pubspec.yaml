@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   firebase_core: "any"
+  firebase_auth : "any"
   flutter_signin_button: "any"
   google_sign_in: "any"
   google_maps_flutter: ^1.0.3

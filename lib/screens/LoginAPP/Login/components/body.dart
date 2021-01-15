@@ -3,19 +3,19 @@ import 'package:FlutterLiveTools/screens/LoginAPP/components/already_have_an_acc
 import 'package:FlutterLiveTools/screens/LoginAPP/components/rounded_button.dart';
 import 'package:FlutterLiveTools/screens/LoginAPP/components/rounded_input_field.dart';
 import 'package:FlutterLiveTools/screens/LoginAPP/components/rounded_password_field.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'background.dart';
 
 class Body extends StatelessWidget {
-  const Body({
-    Key key,
-  }) : super(key: key);
+  const Body({Key key,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    String gmail,pass;
     return Background(
       child: SingleChildScrollView(
         child: Column(
@@ -33,14 +33,14 @@ class Body extends StatelessWidget {
             SizedBox(height: size.height * 0.03),
             RoundedInputField(
               hintText: "Your Email",
-              onChanged: (value) {},
+              onChanged: (value) {gmail = value.toLowerCase();},
             ),
             RoundedPasswordField(
-              onChanged: (value) {},
+              onChanged: (value) {pass = value.toLowerCase();},
             ),
             RoundedButton(
               text: "LOGIN",
-              press: () {},
+              press: () {login( gmail, pass);},
             ),
             SizedBox(height: size.height * 0.03),
             AlreadyHaveAnAccountCheck(
@@ -59,5 +59,21 @@ class Body extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  login(String gmail,String Pass) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: gmail,
+          password: Pass
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+    }
   }
 }
