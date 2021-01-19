@@ -22,12 +22,12 @@ import 'package:FlutterLiveTools/screens/ErrorScreen/5_something_wrong.dart';
 
 import 'package:FlutterLiveTools/screens/E-commAPP/home/home_screen.dart';
 import 'package:FlutterLiveTools/screens/LoginAPP/Welcome/welcome_screen.dart';
-import 'package:FlutterLiveTools/screens/TestScreen.dart';
+import 'package:FlutterLiveTools/screens/MyScreenWidget.dart';
 import 'package:flutter/material.dart';
 
 List<Widget> screenList = [
+  MyScreenWidget(),
   WelcomeScreen(),
-  TestScreen(),
   HomeScreen(),
   NoConnectionScreen(),
   Error404Screen(),
@@ -78,8 +78,6 @@ class _MyAppState extends State<MyApp> {
           itemBuilder: (context, index) {
             return screenList[index];
           }),
-
     );
   }
 }
-

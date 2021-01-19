@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../SizeConfig.dart';
 import '../constants.dart';
+import '../SizeConfig.dart';
 
 class DefaultButton extends StatelessWidget {
-  const DefaultButton( {Key key, this.text, this.press,}) : super(key: key);
+  const DefaultButton({
+    Key key,
+    this.text,
+    this.press,
+  }) : super(key: key);
 
   final String text;
   final Function press;
@@ -17,7 +21,7 @@ class DefaultButton extends StatelessWidget {
       child: FlatButton(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         color: kPrimaryColor,
-        onPressed: (){},
+        onPressed: press,
         child: Text(
           text,
           style: TextStyle(

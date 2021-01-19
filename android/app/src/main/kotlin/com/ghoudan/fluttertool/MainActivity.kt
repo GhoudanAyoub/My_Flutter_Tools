@@ -1,0 +1,6 @@
+package com.ghoudan.fluttertool
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}

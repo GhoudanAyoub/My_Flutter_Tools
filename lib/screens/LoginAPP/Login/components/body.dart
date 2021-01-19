@@ -10,12 +10,14 @@ import 'package:flutter_svg/svg.dart';
 import 'background.dart';
 
 class Body extends StatelessWidget {
-  const Body({Key key,}) : super(key: key);
+  const Body({
+    Key key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    String gmail,pass;
+    String gmail, pass;
     return Background(
       child: SingleChildScrollView(
         child: Column(
@@ -33,14 +35,20 @@ class Body extends StatelessWidget {
             SizedBox(height: size.height * 0.03),
             RoundedInputField(
               hintText: "Your Email",
-              onChanged: (value) {gmail = value.toLowerCase();},
+              onChanged: (value) {
+                gmail = value.toLowerCase();
+              },
             ),
             RoundedPasswordField(
-              onChanged: (value) {pass = value.toLowerCase();},
+              onChanged: (value) {
+                pass = value.toLowerCase();
+              },
             ),
             RoundedButton(
               text: "LOGIN",
-              press: () {login( gmail, pass);},
+              press: () {
+                login(gmail, pass);
+              },
             ),
             SizedBox(height: size.height * 0.03),
             AlreadyHaveAnAccountCheck(
@@ -62,13 +70,10 @@ class Body extends StatelessWidget {
   }
 
   // ignore: non_constant_identifier_names
-  login(String gmail,String Pass) async {
-    FirebaseAuth auth = FirebaseAuth.instance;
+  login(String gmail, String pass) async {
     try {
-      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: gmail,
-          password: Pass
-      );
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: gmail, password: pass);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
