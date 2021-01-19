@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FileNotFoundScreen extends StatelessWidget {
+  static String routeName = "/FileNotFoundScreen";
   @override
   Widget build(BuildContext context) {
     return Scaffold(

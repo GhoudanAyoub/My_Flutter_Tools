@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:FlutterLiveTools/screens/E-commAPP/models/Product.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../constants.dart';

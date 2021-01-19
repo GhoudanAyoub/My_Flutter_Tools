@@ -1,6 +1,7 @@
 
-import 'package:flutter/material.dart';
 import 'package:FlutterLiveTools/screens/E-commAPP/models/Product.dart';
+import 'package:flutter/material.dart';
+
 import '../../constants.dart';
 import 'add_to_cart.dart';
 import 'color_and_size.dart';

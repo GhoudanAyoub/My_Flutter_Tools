@@ -22,11 +22,12 @@ import 'package:FlutterLiveTools/screens/ErrorScreen/5_something_wrong.dart';
 
 import 'package:FlutterLiveTools/screens/E-commAPP/home/home_screen.dart';
 import 'package:FlutterLiveTools/screens/LoginAPP/Welcome/welcome_screen.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:FlutterLiveTools/screens/TestScreen.dart';
 import 'package:flutter/material.dart';
 
 List<Widget> screenList = [
   WelcomeScreen(),
+  TestScreen(),
   HomeScreen(),
   NoConnectionScreen(),
   Error404Screen(),

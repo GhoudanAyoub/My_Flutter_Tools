@@ -61,6 +61,7 @@ class Body extends StatelessWidget {
     );
   }
 
+  // ignore: non_constant_identifier_names
   login(String gmail,String Pass) async {
     FirebaseAuth auth = FirebaseAuth.instance;
     try {
