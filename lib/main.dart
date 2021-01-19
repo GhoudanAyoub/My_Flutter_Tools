@@ -23,6 +23,7 @@ import 'package:FlutterLiveTools/screens/ErrorScreen/5_something_wrong.dart';
 import 'package:FlutterLiveTools/screens/E-commAPP/home/home_screen.dart';
 import 'package:FlutterLiveTools/screens/LoginAPP/Welcome/welcome_screen.dart';
 import 'package:FlutterLiveTools/screens/MyScreenWidget.dart';
+import 'package:FlutterLiveTools/screens/SizeConfig.dart';
 import 'package:flutter/material.dart';
 
 List<Widget> screenList = [
@@ -53,31 +54,33 @@ List<Widget> screenList = [
 ];
 
 void main() {
-  runApp(MyApp());
+  runApp(MyAppState());
 }
 
-class MyApp extends StatefulWidget {
-  // This widget is the root of your application.
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
+class MyAppState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: '20 Flutter Error State Pages',
+    return testWidget;
+  }
+
+  Widget testWidget = new MediaQuery(
+    data: new MediaQueryData(),
+    child: new MaterialApp(
+      title: 'Ghoudan Lib',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // Swipe to check the next Screen
-      home: PageView.builder(
-          itemCount: screenList.length,
-          itemBuilder: (context, index) {
-            return screenList[index];
-          }),
-    );
-  }
+      home: Scaffold(
+        body: Center(
+          child: PageView.builder(
+              itemCount: screenList.length,
+              itemBuilder: (context, index) {
+                return screenList[index];
+              }),
+        ),
+      ),
+    ),
+  );
 }
