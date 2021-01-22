@@ -1,18 +1,49 @@
-import 'package:FlutterLiveTools/screens/Buttons/DefaultButton.dart';
-import 'package:FlutterLiveTools/screens/ErrorScreen/11_broken_link.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/physics.dart';
+import 'dart:convert' as convert;
 
-class MyScreenWidget extends StatelessWidget {
+import 'package:FlutterLiveTools/Models/person.dart';
+import 'package:FlutterLiveTools/screens/Card/SpecialOfferCard.dart';
+import 'package:FlutterLiveTools/screens/Presitence/httpMeth.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+import 'SizeConfig.dart';
+
+class MyScreenWidget extends StatefulWidget {
+  @override
+  _MyScreenWidget createState() => _MyScreenWidget();
+}
+
+class _MyScreenWidget extends State<MyScreenWidget> {
+  var name;
+  List personList = [person];
+  Future<person> _futureperson;
+
+  @override
+  void initState() {
+    super.initState();
+    personList = httpMeth.getAllData() as List;
+    _futureperson = httpMeth.fetchOneUser();
+  }
+
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
-      body: Center(
-        child: DefaultButton(
-          text: "Hello",
-          press: () {
-            MaterialPageRoute(builder: (context) => BrokenLinkScreen());
-          },
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Column(
+              children: List.generate(
+                personList.length,
+                    (index) => SpecialOfferCard(
+                  category: personList[index]["employee_name"],
+                  image: "Image Banner 2.png",
+                  numOfBrands: 33,
+                  press: null,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
