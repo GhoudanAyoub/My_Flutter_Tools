@@ -1,4 +1,4 @@
-
+import 'package:flutter/material.dart';
 
 class person {
   final int id;
@@ -14,6 +14,7 @@ class person {
       this.employee_age,
       this.profile_image});
 
+
   factory person.fromJson(Map<String, dynamic> json) {
     return person(
         id: json["id"],
@@ -22,4 +23,5 @@ class person {
         employee_age: json["employee_age"],
         profile_image: json["profile_image"]);
   }
+
 }

@@ -3,6 +3,7 @@ import 'dart:convert' as convert;
 import 'package:FlutterLiveTools/Models/person.dart';
 import 'package:FlutterLiveTools/screens/Card/SpecialOfferCard.dart';
 import 'package:FlutterLiveTools/screens/Presitence/httpMeth.dart';
+import 'package:FlutterLiveTools/screens/Presitence/sqlLite.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -23,6 +24,7 @@ class _MyScreenWidget extends State<MyScreenWidget> {
     super.initState();
     personList = httpMeth.getAllData() as List;
     _futureperson = httpMeth.fetchOneUser();
+    sqlLite.DOFuntions();
   }
 
   @override
