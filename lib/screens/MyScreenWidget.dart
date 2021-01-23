@@ -4,6 +4,7 @@ import 'package:FlutterLiveTools/Models/person.dart';
 import 'package:FlutterLiveTools/screens/Card/SpecialOfferCard.dart';
 import 'package:FlutterLiveTools/screens/Presitence/httpMeth.dart';
 import 'package:FlutterLiveTools/screens/Presitence/sqlLite.dart';
+import 'package:FlutterLiveTools/screens/Presitence/sqlServer.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -20,11 +21,13 @@ class _MyScreenWidget extends State<MyScreenWidget> {
   Future<person> _futureperson;
 
   @override
-  void initState() {
+  Future<void> initState() async {
     super.initState();
     personList = httpMeth.getAllData() as List;
-    _futureperson = httpMeth.fetchOneUser();
-    sqlLite.DOFuntions();
+    //_futureperson = httpMeth.fetchOneUser();
+    //sqlLite.DOFuntions();
+    dynamic res = await sqlServer.connectToSqlSever();
+    print(res);
   }
 
   @override
@@ -33,19 +36,15 @@ class _MyScreenWidget extends State<MyScreenWidget> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          children: <Widget>[
-            Column(
-              children: List.generate(
-                personList.length,
-                    (index) => SpecialOfferCard(
-                  category: personList[index]["employee_name"],
-                  image: "Image Banner 2.png",
-                  numOfBrands: 33,
-                  press: null,
-                ),
-              ),
+          children: List.generate(
+            personList.length,
+                (index) => SpecialOfferCard(
+              category: personList[index]["employee_name"],
+              image: "Image Banner 2.png",
+              numOfBrands: 33,
+              press: null,
             ),
-          ],
+          ),
         ),
       ),
     );
