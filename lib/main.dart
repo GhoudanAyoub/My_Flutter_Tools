@@ -1,6 +1,3 @@
-import 'dart:io';
-
-import 'package:FlutterLiveTools/screens/Buttons/DefaultButton.dart';
 import 'package:FlutterLiveTools/screens/E-commAPP/home/home_screen.dart';
 import 'package:FlutterLiveTools/screens/ErrorScreen/10_connection_lost.dart';
 import 'package:FlutterLiveTools/screens/ErrorScreen/11_broken_link.dart';
@@ -24,13 +21,12 @@ import 'package:FlutterLiveTools/screens/ErrorScreen/7_error_2.dart';
 import 'package:FlutterLiveTools/screens/ErrorScreen/8_404_error_2.dart';
 import 'package:FlutterLiveTools/screens/ErrorScreen/9_location_access.dart';
 import 'package:FlutterLiveTools/screens/LoginAPP/Welcome/welcome_screen.dart';
-import 'package:FlutterLiveTools/screens/MyScreenWidget.dart';
-import 'package:FlutterLiveTools/screens/SizeConfig.dart';
+import 'package:FlutterLiveTools/widgetpage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 
 List<Widget> screenList = [
-  MyScreenWidget(),
+  //MyScreenWidget(),
+  WidgetPage(),
   WelcomeScreen(),
   HomeScreen(),
   NoConnectionScreen(),
@@ -56,14 +52,7 @@ List<Widget> screenList = [
   CameraAccessScreen()
 ];
 
-void main() {
-  FlutterError.onError = (FlutterErrorDetails details) {
-    FlutterError.dumpErrorToConsole(details);
-    if (kReleaseMode)
-      exit(1);
-  };
-  runApp(MyAppState());
-}
+void main() => runApp(MyAppState());
 
 class MyAppState extends StatelessWidget {
   @override
@@ -82,13 +71,12 @@ class MyAppState extends StatelessWidget {
       ),
       home: Scaffold(
         body: Center(
-            child:
-            PageView.builder(
+          child: PageView.builder(
               itemCount: screenList.length,
               itemBuilder: (context, index) {
                 return screenList[index];
               }),
-            ),
+        ),
       ),
     ),
   );
